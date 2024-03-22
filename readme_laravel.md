@@ -125,3 +125,11 @@ php artisan make:factory NoteFactory --model=Note
 php artisan migrate:refresh --seed 
 
 php artisan make:controller NoteController --resource --model=Note
+
+
+php artisan make:views note.index
+php artisan make:views note.create
+php artisan make:views note.edit
+php artisan make:views note.show
+
+touch resources/views/note/create.blade.php
