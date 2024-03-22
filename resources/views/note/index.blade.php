@@ -1,6 +1,6 @@
 <x-layout>
     <div class="note-container">
-        <a href="" class="new-note-btn">
+        <a href="{{ route('note.create') }}" class="new-note-btn">
             New note
         </a>
         <div class="notes">
@@ -10,8 +10,8 @@
                         {{ Str::words($note->note, 30) }}
                     </div>
                     <div class="note-buttons">
-                        <a href="#" class="note-edit-button">View</a>
-                        <a href="#" class="note-edit-button">Edit</a>
+                        <a href="{{ route('note.show', $note) }}" class="note-edit-button">View</a>
+                        <a href="{{ route('note.edit', $note) }}" class="note-edit-button">Edit</a>
                         <button class="note-delete-button">Delete</button>
                     </div>
                 </div>
