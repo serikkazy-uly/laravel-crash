@@ -133,3 +133,17 @@ php artisan make:views note.edit
 php artisan make:views note.show
 
 touch resources/views/note/create.blade.php
+
+----------
+
+composer require laravel/ui
+php artisan ui bootstrap --auth
+docker compose exec node npm install
+docker compose exec node npm run dev
+php artisan migrate ????????????????
+
+
+docker compose exec node npm install --sa
+ve-dev vite laravel-vite-plugin
+
+docker compose exec node npm run build

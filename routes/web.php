@@ -1,19 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Middleware\isAdmin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
+
+
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
@@ -27,3 +23,7 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
 
 Route::resource('note', NoteController::class);
+Auth::routes();
+
+Route::get('auth/home', [App\Http\Controllers\HomeController::class, 'index'])->name('auth.home')->middleware('isAdmin');
+Route::get('user/home', [App\Http\Controllers\HomeController::class, 'index'])->name('user.home');
