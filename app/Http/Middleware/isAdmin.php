@@ -4,23 +4,25 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Response; 
+use Illuminate\Http\RedirectResponse; 
 
 class isAdmin
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
             if (auth()->user()->is_admin == 1) {
                 return $next($request);
             } else {
-
-                return redirect()->route('user.home');
+                return new RedirectResponse(route('user.home'));
             }
         } else {
             return response()->json(['message' => 'Forbidden'], 403);
