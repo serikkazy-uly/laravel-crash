@@ -25,5 +25,5 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 Route::resource('note', NoteController::class);
 Auth::routes();
 
-Route::get('auth/home', [App\Http\Controllers\HomeController::class, 'index'])->name('auth.home')->middleware('isAdmin');
-Route::get('user/home', [App\Http\Controllers\HomeController::class, 'index'])->name('user.home');
+Route::get('auth/home', [App\Http\Controllers\Auth\HomeController::class, 'index'])->name('auth.home')->middleware('isAdmin');
+Route::get('user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
